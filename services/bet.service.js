@@ -12,9 +12,9 @@ module.exports = class BetService extends BaseService {
 
   // Método para registrar una apuesta
   placeBet = catchServiceAsync(async (betData) => {
-    const { userId, eventId, amount, selectedOutcome, odds } = betData;
+    const { userId, eventId, sportEventName,  amount, selectedOutcome, odds } = betData;
   
-    if (!userId || !eventId || !amount || !selectedOutcome || !odds) {
+    if (!userId || !eventId || !sportEventName || !amount || !selectedOutcome || !odds) {
       throw new AppError("Todos los campos son obligatorios", 400);
     }
   
@@ -22,6 +22,7 @@ module.exports = class BetService extends BaseService {
     const newBet = await _bet.create({
       userId,
       eventId,
+      sportEventName,
       amount,
       selectedOutcome,
       odds,

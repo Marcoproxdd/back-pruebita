@@ -7,7 +7,12 @@ const betSchema = new mongoose.Schema({
     required: true
   },
   eventId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
+    ref: "Event",
+    required: true
+  },
+  sportEventName:{
+    type: String,
     ref: "Event",
     required: true
   },
